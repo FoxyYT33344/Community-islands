@@ -26,149 +26,79 @@
   </header>
 
   <!-- HERO -->
-  <section class="relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 py-28 text-center">
-      <div class="inline-block px-4 py-2 rounded-full bg-purple-600/20 border border-purple-500/40 mb-6">
-        <span class="text-purple-300 font-semibold">🔥 Minecraft Community Server</span>
-      </div>
-
-      <h2 class="text-5xl md:text-7xl font-black leading-tight">
-        Willkommen auf
-        <span class="block text-purple-400">Community Islands</span>
-      </h2>
-
-      <p class="max-w-2xl mx-auto mt-6 text-gray-300 text-lg md:text-xl">
-        Spiele mit Freunden, baue deine Insel auf, kämpfe in Events und werde der reichste Spieler auf dem Server.
-      </p>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features" class="max-w-7xl mx-auto px-6 py-24">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-black text-purple-400">Server Features</h2>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center">⚡ SkyPvP</div>
-      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center">⚡ Clans</div>
-      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center">⚡ Jobs</div>
-      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 text-center">⚡ Events</div>
-    </div>
-  </section>
-
-  <!-- NEWS -->
-  <section id="news" class="bg-black/40 border-y border-white/10 py-24">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-5xl font-black text-purple-400 mb-10">Neuigkeiten</h2>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white/5 rounded-3xl border border-white/10 p-8">
-          <div class="text-purple-400 text-sm font-bold mb-3">UPDATE</div>
-          <h3 class="text-2xl font-black mb-4">Neue SkyPvP Season</h3>
-          <p>Die neue Season startet heute mit neuen Kisten, Quests und Coins!</p>
-        </div>
-
-        <div class="bg-white/5 rounded-3xl border border-white/10 p-8">
-          <div class="text-purple-400 text-sm font-bold mb-3">EVENT</div>
-          <h3 class="text-2xl font-black mb-4">Community Event</h3>
-          <p>Am Samstag findet ein großes Drop Event auf dem Server statt.</p>
-        </div>
-
-        <div class="bg-white/5 rounded-3xl border border-white/10 p-8">
-          <div class="text-purple-400 text-sm font-bold mb-3">UPDATE</div>
-          <h3 class="text-2xl font-black mb-4">Neue Clan Features</h3>
-          <p>Clans können jetzt eigene Homes und Clan-Chats benutzen.</p>
-        </div>
-      </div>
-    </div>
+  <section class="text-center py-28">
+    <h2 class="text-5xl md:text-7xl font-black">
+      Willkommen auf <span class="text-purple-400">Community Islands</span>
+    </h2>
   </section>
 
   <!-- JOIN -->
-  <section id="join" class="max-w-5xl mx-auto px-6 py-24 text-center">
-    <div class="bg-gradient-to-r from-purple-700/40 to-pink-700/40 rounded-[40px] border border-purple-500/40 p-12 backdrop-blur-xl shadow-2xl">
-      <h2 class="text-5xl font-black">Jetzt Mitspielen</h2>
+  <section id="join" class="text-center py-20">
+    <form id="joinForm" class="flex flex-col items-center gap-4">
+      <input
+        type="text"
+        id="username"
+        placeholder="Minecraft Name"
+        class="px-6 py-4 rounded-2xl bg-black/40 border border-purple-500 text-white"
+      />
 
-      <p class="mt-6 text-xl text-gray-200">
-        Gib deinen Minecraft Namen ein und verbinde dich mit Community Islands!
-      </p>
-
-      <div class="mt-10 inline-block bg-black/40 border border-purple-500 rounded-2xl px-8 py-5">
-        <p class="text-gray-400 text-sm">SERVER IP</p>
-        <p class="text-3xl font-black text-purple-300">play.community-islands.net</p>
-      </div>
-
-      <form id="joinForm" class="mt-10 flex flex-col items-center gap-4">
-        <input
-          type="text"
-          id="username"
-          placeholder="Dein Minecraft Name"
-          class="w-full max-w-md px-6 py-4 rounded-2xl bg-black/40 border border-purple-500 text-white outline-none"
-        />
-
-        <button
-          type="submit"
-          class="px-8 py-4 rounded-2xl bg-purple-600 hover:bg-purple-500 transition font-bold text-lg"
-        >
-          ▶ Spielen
-        </button>
-      </form>
-    </div>
+      <button class="px-8 py-4 rounded-2xl bg-purple-600 hover:bg-purple-500 font-bold">
+        ▶ Spielen
+      </button>
+    </form>
   </section>
 
   <!-- RICKROLL -->
-  <div id="rickrollOverlay" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-6">
-    <div class="relative w-full max-w-4xl">
-
-      <button
-        onclick="closeRickroll()"
-        class="absolute -top-14 right-0 bg-red-600 hover:bg-red-500 px-5 py-2 rounded-xl font-bold"
-      >
+  <div id="rickrollOverlay" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-50">
+    
+    <div class="w-full max-w-4xl relative">
+      
+      <button onclick="closeRickroll()"
+        class="absolute -top-12 right-0 bg-red-600 px-5 py-2 rounded-xl font-bold">
         ✕ Schließen
       </button>
 
-      <div class="rounded-3xl overflow-hidden border-4 border-purple-500 shadow-2xl">
+      <div class="rounded-2xl overflow-hidden border-4 border-purple-500">
         <iframe
+          id="rickVideo"
           width="100%"
           height="500"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+          src=""
           allow="autoplay"
+          allowfullscreen
         ></iframe>
-
-        <div class="p-6 text-center border-t border-purple-500/30">
-          <p class="text-red-300 font-bold">
-            Feature noch nicht verfügbar 😄
-          </p>
-        </div>
       </div>
+
+      <p class="text-center mt-4 text-red-300 font-bold">
+        System wird geladen...
+      </p>
+
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-10 text-center text-gray-500">
-    <p>© 2026 Community Islands - Alle Rechte vorbehalten</p>
-  </footer>
-
-  <!-- SCRIPT -->
   <script>
     const form = document.getElementById("joinForm");
     const overlay = document.getElementById("rickrollOverlay");
+    const video = document.getElementById("rickVideo");
 
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
 
       const username = document.getElementById("username").value;
-
       if (username.trim().length < 3) {
-        alert("Bitte gib einen gültigen Minecraft Namen ein!");
+        alert("Bitte gültigen Namen eingeben!");
         return;
       }
+
+      // AUTOPLAY FIX: mute=1 ist wichtig
+      video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0";
 
       overlay.classList.remove("hidden");
     });
 
     function closeRickroll() {
       overlay.classList.add("hidden");
+      video.src = ""; // stoppt Video komplett
     }
   </script>
 
