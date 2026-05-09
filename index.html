@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Community Islands</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- YouTube API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 
 <body class="min-h-screen bg-gradient-to-b from-purple-950 via-black to-gray-950 text-white font-sans">
@@ -32,54 +35,79 @@
     </h2>
   </section>
 
-  <!-- JOIN -->
-  <section id="join" class="text-center py-20">
-    <form id="joinForm" class="flex flex-col items-center gap-4">
-      <input
-        type="text"
-        id="username"
-        placeholder="Minecraft Name"
-        class="px-6 py-4 rounded-2xl bg-black/40 border border-purple-500 text-white"
-      />
-
-      <button class="px-8 py-4 rounded-2xl bg-purple-600 hover:bg-purple-500 font-bold">
-        ▶ Spielen
-      </button>
-    </form>
+  <!-- FEATURES -->
+  <section id="features" class="max-w-7xl mx-auto px-6 py-24 text-center">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8">⚡ SkyPvP</div>
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8">⚡ Clans</div>
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8">⚡ Jobs</div>
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8">⚡ Events</div>
+    </div>
   </section>
 
-  <!-- RICKROLL -->
-  <div id="rickrollOverlay" class="hidden fixed inset-0 bg-black/95 flex items-center justify-center z-50">
-    
-    <div class="w-full max-w-4xl relative">
-      
-      <button onclick="closeRickroll()"
-        class="absolute -top-12 right-0 bg-red-600 px-5 py-2 rounded-xl font-bold">
-        ✕ Schließen
-      </button>
+  <!-- NEWS -->
+  <section id="news" class="bg-black/40 border-y border-white/10 py-24 text-center">
+    <h2 class="text-5xl font-black text-purple-400 mb-10">Neuigkeiten</h2>
 
-      <div class="rounded-2xl overflow-hidden border-4 border-purple-500">
-        <iframe
-          id="rickVideo"
-          width="100%"
-          height="500"
-          src=""
-          allow="autoplay"
-          allowfullscreen
-        ></iframe>
-      </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
+      <div class="bg-white/5 p-8 rounded-3xl">Neue SkyPvP Season</div>
+      <div class="bg-white/5 p-8 rounded-3xl">Community Event</div>
+      <div class="bg-white/5 p-8 rounded-3xl">Clan Updates</div>
+    </div>
+  </section>
 
-      <p class="text-center mt-4 text-red-300 font-bold">
-        System wird geladen...
-      </p>
+  <!-- JOIN -->
+  <section id="join" class="text-center py-24">
+    <div class="max-w-3xl mx-auto bg-purple-900/30 p-10 rounded-3xl border border-purple-500/40">
+
+      <h2 class="text-4xl font-black">Jetzt Mitspielen</h2>
+
+      <form id="joinForm" class="mt-8 flex flex-col gap-4 items-center">
+        <input
+          type="text"
+          id="username"
+          placeholder="Minecraft Name"
+          class="px-6 py-4 rounded-2xl bg-black/40 border border-purple-500 w-full max-w-md"
+        />
+
+        <button class="px-8 py-4 rounded-2xl bg-purple-600 hover:bg-purple-500 font-bold">
+          ▶ Spielen
+        </button>
+      </form>
 
     </div>
+  </section>
+
+  <!-- FULLSCREEN RICKROLL -->
+  <div id="overlay" class="hidden fixed inset-0 bg-black z-[9999] flex items-center justify-center">
+    <div id="player" class="w-full h-full"></div>
   </div>
 
+  <!-- FOOTER -->
+  <footer class="text-center py-10 text-gray-500 border-t border-white/10">
+    © 2026 Community Islands
+  </footer>
+
   <script>
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '100%',
+        width: '100%',
+        videoId: 'dQw4w9WgXcQ',
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          rel: 0,
+          fs: 1,
+          modestbranding: 1
+        }
+      });
+    }
+
     const form = document.getElementById("joinForm");
-    const overlay = document.getElementById("rickrollOverlay");
-    const video = document.getElementById("rickVideo");
+    const overlay = document.getElementById("overlay");
 
     form.addEventListener("submit", function(e) {
       e.preventDefault();
@@ -90,16 +118,17 @@
         return;
       }
 
-      // AUTOPLAY FIX: mute=1 ist wichtig
-      video.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0";
-
       overlay.classList.remove("hidden");
+
+      setTimeout(() => {
+        if (player && player.playVideo) {
+          player.unMute();
+          player.setVolume(100);
+          player.playVideo();
+        }
+      }, 500);
     });
 
-    function closeRickroll() {
-      overlay.classList.add("hidden");
-      video.src = ""; // stoppt Video komplett
-    }
   </script>
 
 </body>
